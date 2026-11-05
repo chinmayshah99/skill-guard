@@ -1,0 +1,5 @@
+{
+  "name": "skill-guard",
+  "version": "0.1.0",
+  "description": "Reviews every skill before it runs and limits what it can reach while running."
+}

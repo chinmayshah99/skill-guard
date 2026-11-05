@@ -1,0 +1,50 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/guard/cli.py\" hook || exit 2",
+            "timeout": 300,
+            "statusMessage": "skill-guard: checking skill"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Skill|Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/guard/cli.py\" hook || exit 2",
+            "timeout": 300,
+            "statusMessage": "skill-guard: checking skill"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|WebFetch|WebSearch|Grep|Glob|Write|Edit|NotebookEdit|mcp__.*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/guard/cli.py\" hook || exit 2",
+            "timeout": 20
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -I \"${CLAUDE_PLUGIN_ROOT}/guard/cli.py\" hook || exit 2",
+            "timeout": 20
+          }
+        ]
+      }
+    ]
+  }
+}

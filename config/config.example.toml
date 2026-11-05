@@ -1,0 +1,37 @@
+# skill-guard settings. Copy to ~/.claude/skill-guard/config.toml and keep
+# only the lines you change. Unknown settings are an error, so a typo can't
+# silently weaken the guard. An org file at
+# /Library/Application Support/ClaudeCode/skill-guard.toml (macOS) or
+# /etc/claude-code/skill-guard.toml (Linux) overrides this one.
+
+# "enforce" stops unsafe skills. "audit" only logs what it would have done.
+mode = "enforce"
+
+# Who reviews skills. Skill content is sent to whichever you choose.
+#   "auto"                      first installed of Claude, Codex, the API
+#   ["claude-cli"]              one reviewer, which runs both review styles
+#   ["claude-cli", "codex-cli"] two models, harder to fool with injection
+# A reviewer named here must be installed and logged in, or skills are blocked.
+reviewers = "auto"
+
+# Let people approve a skill version from their own terminal.
+allow_self_approval = true
+
+# Check dependencies against the OSV advisory database.
+dependency_check = true
+
+# Days before a clean result is reviewed again.
+cache_ttl_days = 30
+
+# Leave a model empty to use that tool's default.
+[models]
+claude-cli = ""
+codex-cli = ""
+anthropic-api = "claude-opus-5-5"
+
+# Lists replace the defaults rather than add to them, so copy the defaults
+# from config/policy.default.json before adding your own entries.
+# allowlist = [
+#   { host = "github.com", paths = ["/anthropics/", "/my-org/"] },
+#   { host = "docs.claude.com" },
+# ]

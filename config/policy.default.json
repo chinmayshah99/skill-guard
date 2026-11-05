@@ -1,0 +1,32 @@
+{
+  "policy_version": 1,
+  "mode": "enforce",
+  "reviewers": "auto",
+  "models": {"claude-cli": "", "codex-cli": "", "anthropic-api": "claude-opus-5-5"},
+  "allow_self_approval": true,
+  "dependency_check": true,
+  "cache_ttl_days": 30,
+  "llm_call_timeout_seconds": 100,
+  "review_deadline_seconds": 240,
+  "max_per_file_reviews": 8,
+  "limits": {"file_bytes": 1000000, "total_bytes": 5000000, "file_count": 500, "llm_chars": 400000},
+  "allowlist": [
+    {"host": "github.com", "paths": ["/anthropics/"]},
+    {"host": "raw.githubusercontent.com", "paths": ["/anthropics/"]},
+    {"host": "docs.claude.com"},
+    {"host": "code.claude.com"},
+    {"host": "docs.anthropic.com"},
+    {"host": "api.anthropic.com"},
+    {"host": "schemas.openxmlformats.org"},
+    {"host": "schemas.microsoft.com"},
+    {"host": "www.w3.org"},
+    {"host": "purl.org"},
+    {"host": "localhost"},
+    {"host": "127.0.0.1"}
+  ],
+  "denied_hosts": ["rentry.co", "glot.io", "pastebin.com", "paste.ee", "hastebin.com", "transfer.sh", "webhook.site", "ngrok.io", "ngrok.app", "ngrok-free.app"],
+  "mcp_allowlist": [],
+  "protected_names": ["clawhub", "claude", "anthropic", "pdf", "docx", "xlsx", "pptx", "skill-creator", "skill-guard", "code-review", "security-review"],
+  "builtin_skills": ["update-config", "keybindings-help", "code-review", "simplify", "fewer-permission-prompts", "loop", "schedule", "claude-api", "run", "plugin-authoring", "init", "security-review"],
+  "inert_binary_types": ["png", "jpg", "jpeg", "gif", "webp", "ico", "pdf", "woff", "woff2", "ttf", "otf"]
+}
