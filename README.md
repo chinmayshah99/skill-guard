@@ -138,6 +138,7 @@ An org file at `/Library/Application Support/ClaudeCode/skill-guard.toml` (macOS
 - Opening a skill with `cat` through Bash is not treated as starting it.
 - Attacks through allowed services, or harmful changes that make no network call, can still get through.
 - A Codex reviewer runs read-only but can't have its tools fully removed.
+- It errs on the side of blocking, so expect false positives. Safe skills can be stopped when they edit agent config as their real job, quote attack patterns in their docs, or mention example hosts and IPs. In our [analysis](analysis/bad-skills-analysis.md), it stopped all 15 malicious skills and also blocked 17 of 40 legitimate ones. Use `mode = "audit"` to see what would be blocked before enforcing.
 
 ## Tests
 
