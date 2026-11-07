@@ -21,12 +21,12 @@ flowchart TD
     start(["Skill starts<br/>/name · Skill tool · Read SKILL.md"]) --> collect
 
     subgraph pre ["Before it runs"]
-        collect["<b>1. Collect files</b><br/>read and hash every file<br/>symlinks · size and count limits<br/>binaries and __pycache__"]
-        static["<b>2. Static rules</b><br/>pipe-to-shell · download-and-run<br/>archive and release links · exfil webhooks<br/>embedded keys · secret access · .env<br/>persistence · agent config writes<br/>prompt injection · hiding from the user<br/>lookalike names"]
-        deps["<b>3. Dependencies</b><br/>lockfiles · requirements*.txt<br/>node_modules · .dist-info<br/>checked against OSV"]
-        cache{"<b>4. Signed cache</b><br/>same content hash<br/>already cleared?"}
-        llm["<b>5. LLM review</b><br/>standard + adversarial<br/>destinations · downloads<br/>injection · purpose mismatch"]
-        decide["<b>6. Decision in plain code</b><br/>the LLM can only make it stricter"]
+        collect["1. Collect files<br/>read and hash every file<br/>symlinks · size and count limits<br/>binaries and __pycache__"]
+        static["2. Static rules<br/>pipe-to-shell · download-and-run<br/>archive and release links · exfil webhooks<br/>embedded keys · secret access · .env<br/>persistence · agent config writes<br/>prompt injection · hiding from the user<br/>lookalike names"]
+        deps["3. Dependencies<br/>lockfiles · requirements*.txt<br/>node_modules · .dist-info<br/>checked against OSV"]
+        cache{"4. Signed cache<br/>same content hash<br/>already cleared?"}
+        llm["5. LLM review<br/>standard + adversarial<br/>destinations · downloads<br/>injection · purpose mismatch"]
+        decide["6. Decision in plain code<br/>the LLM can only make it stricter"]
 
         collect --> static
         static -->|block| blocked
@@ -48,7 +48,7 @@ flowchart TD
     allowed --> runtime
 
     subgraph run ["While it runs"]
-        runtime["<b>7. Every tool call</b><br/>Bash · WebFetch · WebSearch · MCP<br/>Read · Write · Edit"]
+        runtime["7. Every tool call<br/>Bash · WebFetch · WebSearch · MCP<br/>Read · Write · Edit"]
         net["Network destination<br/>on the allowlist?"]
         secrets["Secret paths<br/>~/.ssh · .aws · .env · keychain"]
         guard["Guard and agent settings<br/>.claude/settings · plugins · skills"]
