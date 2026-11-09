@@ -11,7 +11,7 @@ Requires Python 3.11+ and at least one reviewer: the `claude` CLI, the `codex` C
 Try it in one session:
 
 ```bash
-claude --plugin-dir /path/to/skill-security
+claude --plugin-dir /path/to/skill-guard
 ```
 
 ## What gets checked
